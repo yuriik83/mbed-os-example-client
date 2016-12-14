@@ -59,11 +59,11 @@ NanostackRfPhyMcr20a rf_phy(MCR20A_SPI_MOSI, MCR20A_SPI_MISO, MCR20A_SPI_SCLK, M
 
 #ifdef MESH
     // Mesh does not have DNS, so must use direct IPV6 address
-    #define MBED_SERVER_ADDRESS "coaps://[2607:f0d0:2601:52::20]:5684"
+    #define MBED_SERVER_ADDRESS "coaps://[fdf9:b02a:9fab:2d00:3e4a:92ff:fef5:267a]:5683"
 #else
     // This is address to mbed Device Connector, name based
     // assume all other stacks support DNS properly
-    #define MBED_SERVER_ADDRESS "coap://api.connector.mbed.com:5684"
+    #define MBED_SERVER_ADDRESS "coap://10.45.4.32:5683"
 #endif
 
 RawSerial output(USBTX, USBRX);

@@ -60,7 +60,7 @@
 	// WiFi or Ethernet supports both - TCP by default to avoid
 	// NAT problems, but UDP will also work - IF you configure
 	// your network right.
-    M2MInterface::BindingMode SOCKET_MODE = M2MInterface::TCP;
+    M2MInterface::BindingMode SOCKET_MODE = M2MInterface::UDP;
 #endif
 
 
@@ -173,10 +173,10 @@ public:
         if(security) {
             // Add ResourceID's and values to the security ObjectID/ObjectInstance
             security->set_resource_value(M2MSecurity::M2MServerUri, _server_address);
-            security->set_resource_value(M2MSecurity::SecurityMode, M2MSecurity::Certificate);
-            security->set_resource_value(M2MSecurity::ServerPublicKey, SERVER_CERT, sizeof(SERVER_CERT));
-            security->set_resource_value(M2MSecurity::PublicKey, CERT, sizeof(CERT));
-            security->set_resource_value(M2MSecurity::Secretkey, KEY, sizeof(KEY));
+            security->set_resource_value(M2MSecurity::SecurityMode, M2MSecurity::NoSecurity);
+            security->set_resource_value(M2MSecurity::ServerPublicKey, NULL);
+            security->set_resource_value(M2MSecurity::PublicKey, CERT, 0);
+            security->set_resource_value(M2MSecurity::Secretkey, KEY, 0);
         }
         return security;
     }
